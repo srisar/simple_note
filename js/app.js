@@ -3,15 +3,13 @@ import {downloadFile} from "./_downloads.js";
 
 $(function () {
 
+    $("#lbl_version").text("v 0.10");
 
     store.initLocalStorage();
-    let storedDoc = store.fetchStoredDocument();
-
-    if (storedDoc !== null) {
-        loadDocument(storedDoc);
-    }
+    loadDocument(store.fetchStoredDocument());
 
     updateLastUpdatedTime();
+    autoUpdateWindowTitle();
 
     btnSaveDocumentClick();
     btnNewDocClick();
@@ -24,9 +22,17 @@ $(function () {
 });
 
 
-function loadDocument(document) {
-    $("#document_title").val(document.title);
-    $("#document").val(document.body);
+function loadDocument(note) {
+
+    if (note === null) return;
+
+    $("#note_title").val(note.title);
+    $("#note_body").val(note.body);
+
+    if (note.title !== "") {
+        document.title = `simple note - ${note.title}`;
+    }
+
 }
 
 function updateLastUpdatedTime() {
@@ -34,11 +40,20 @@ function updateLastUpdatedTime() {
     labelUpdateTime.val(moment().format('MMMM Do YYYY, h:mm:ss a').toLowerCase());
 }
 
+function autoUpdateWindowTitle() {
+
+    $("#note_title").on("keyup", function () {
+        document.title = "";
+        document.title = "simple note";
+        document.title += " - " + $(this).val();
+    });
+
+}
 
 function saveDocument() {
 
-    const documentTitle = $("#document_title");
-    const documentBody  = $("#document");
+    const documentTitle = $("#note_title");
+    const documentBody  = $("#note_body");
 
     const document = {
         'title': documentTitle.val(),
@@ -49,8 +64,8 @@ function saveDocument() {
     updateLastUpdatedTime();
 }
 
-function autoSave(document) {
-    setInterval(saveDocument, 5000, document);
+function autoSave(note) {
+    setInterval(saveDocument, 5000, note);
 }
 
 
@@ -66,8 +81,8 @@ function btnSaveDocumentClick(document) {
 function btnNewDocClick() {
     $("#btn_new_doc").on("click", function () {
 
-        const documentTitle = $("#document_title");
-        const documentBody  = $("#document");
+        const documentTitle = $("#note_title");
+        const documentBody  = $("#note_body");
 
         store.cleanLocalStore();
 
@@ -81,8 +96,8 @@ function btnNewDocClick() {
 function btnDownloadClick() {
     $("#btn_download").on("click", function () {
 
-        let title  = $("#document_title").val();
-        const body = $("#document").val();
+        let title  = $("#note_title").val();
+        const body = $("#note_body").val();
 
         if (title === "") {
             title = "untitled"

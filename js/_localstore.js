@@ -1,29 +1,29 @@
-const DOC_TITLE = 'doc_title';
-const DOC_BODY  = 'doc_body';
+const NOTE_TITLE = 'note_title';
+const NOTE_BODY  = 'note_body';
 
 export function initLocalStorage() {
-    let localStoreDocTitle = window.localStorage.getItem(DOC_TITLE);
-    let localStoreDocBody  = window.localStorage.getItem(DOC_BODY);
+    let localStoreDocTitle = window.localStorage.getItem(NOTE_TITLE);
+    let localStoreDocBody  = window.localStorage.getItem(NOTE_BODY);
 
     if (localStoreDocTitle === null) {
-        window.localStorage.setItem(DOC_TITLE, "");
+        localStorage.setItem(NOTE_TITLE, "");
     }
 
     if (localStoreDocBody === null) {
-        window.localStorage.setItem(DOC_BODY, "");
+        localStorage.setItem(NOTE_BODY, "");
     }
 
 }
 
-export function updateLocalStorageDocument(document) {
+export function updateLocalStorageDocument(note) {
 
-    window.localStorage.setItem(DOC_TITLE, document.title);
-    window.localStorage.setItem(DOC_BODY, document.body);
+    localStorage.setItem(NOTE_TITLE, note.title);
+    localStorage.setItem(NOTE_BODY, note.body);
 }
 
 export function fetchStoredDocument() {
-    let localStoreDocTitle = window.localStorage.getItem(DOC_TITLE);
-    let localStoreDocBody  = window.localStorage.getItem(DOC_BODY);
+    let localStoreDocTitle = localStorage.getItem(NOTE_TITLE);
+    let localStoreDocBody  = localStorage.getItem(NOTE_BODY);
 
     if (localStoreDocTitle !== null) {
         return {
@@ -37,15 +37,15 @@ export function fetchStoredDocument() {
 }
 
 export function cleanLocalStore() {
-    let localStoreDocTitle = window.localStorage.getItem(DOC_TITLE);
-    let localStoreDocBody  = window.localStorage.getItem(DOC_BODY);
+    let localStoreDocTitle = window.localStorage.getItem(NOTE_TITLE);
+    let localStoreDocBody  = window.localStorage.getItem(NOTE_BODY);
 
     if (localStoreDocTitle !== null) {
-        window.localStorage.setItem(DOC_TITLE, "");
+        window.localStorage.setItem(NOTE_TITLE, "");
     }
 
     if (localStoreDocBody !== null) {
-        window.localStorage.setItem(DOC_BODY, "");
+        window.localStorage.setItem(NOTE_BODY, "");
     }
 
 }

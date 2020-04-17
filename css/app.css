@@ -28,7 +28,7 @@ body {
   width: 24px;
 }
 
-#document {
+#note_body {
   border: solid 1px #636e72;
   height: 100%;
   width: 100%;
@@ -37,13 +37,14 @@ body {
   font-family: "Recursive", sans-serif;
 }
 
-#document:focus {
+#note_body:focus {
   outline-width: 0;
 }
 
-#document_title {
+#note_title {
   font-size: 1.1em;
   font-weight: bold;
+  border: solid 1px #636e72;
 }
 
 .m-container {
