@@ -31,7 +31,7 @@ function loadDocument(document) {
 
 function updateLastUpdatedTime() {
     const labelUpdateTime = $("#lbl_update_time");
-    labelUpdateTime.val(moment().format('MMMM Do YYYY, h:mm:ss a'));
+    labelUpdateTime.val(moment().format('MMMM Do YYYY, h:mm:ss a').toLowerCase());
 }
 
 

@@ -20,6 +20,10 @@ body {
   background-color: #dfe6e9;
 }
 
+.btn {
+  text-transform: lowercase;
+}
+
 #document {
   border: solid 1px #636e72;
   height: 100%;
@@ -60,6 +64,10 @@ body {
 
 #lbl_update_time {
   width: 225px;
+}
+
+.footer {
+  font-size: 0.8em;
 }
 
 /* width */
