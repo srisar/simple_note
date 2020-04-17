@@ -78,9 +78,19 @@ function btnNewDocClick() {
     });
 }
 
-function btnDownloadClick(document) {
+function btnDownloadClick() {
     $("#btn_download").on("click", function () {
-        const content = document.val();
-        downloadFile('simple_note.md', content);
+
+        let title  = $("#document_title").val();
+        const body = $("#document").val();
+
+        if (title === "") {
+            title = "untitled"
+        }
+
+        let content = `## ${title}\n\n${body}`;
+
+        downloadFile(`${title}.md`, content);
+
     })
 }
