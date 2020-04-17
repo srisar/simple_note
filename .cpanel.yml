@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/gravbkrn/note.gravitide.io/
+    - export DEPLOYPATH=/home/gravbkrn/note.srisar.dev/
     - cp -R * $DEPLOYPATH
