@@ -1,0 +1,66 @@
+@font-face {
+  font-family: "Recursive";
+  src: url("recursive.woff2") format("woff2-variations");
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Recursive";
+  src: url("recursive.woff2") format("woff2-variations");
+  font-weight: bold;
+}
+body, html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: "Recursive", sans-serif;
+  font-size: 0.9em;
+  padding: 10px;
+  background-color: #dfe6e9;
+}
+
+#document {
+  border: solid 1px #636e72;
+  height: 100%;
+  width: 100%;
+  padding: 10px 10px 10px 10px;
+  white-space: pre;
+  resize: none;
+  font-family: "Recursive", sans-serif;
+}
+
+#document:focus {
+  outline-width: 0;
+}
+
+#document_title {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.m-container {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+
+.m-row {
+  display: table-row;
+  height: 0;
+}
+
+.m-cell {
+  display: table-cell;
+  height: 100%;
+}
+
+.m-row.m-h-100 {
+  height: 100%;
+}
+
+#lbl_update_time {
+  width: 225px;
+}
+
+/*# sourceMappingURL=app.css.map */
