@@ -101,3 +101,9 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #2d3436;
 }
+
+@media screen and (max-width: 600px){
+  #last_updated_area .input-group-prepend{
+    display: none;
+  }
+}
