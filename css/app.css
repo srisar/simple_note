@@ -24,6 +24,10 @@ body {
   text-transform: lowercase;
 }
 
+.app_icon {
+  width: 24px;
+}
+
 #document {
   border: solid 1px #636e72;
   height: 100%;
