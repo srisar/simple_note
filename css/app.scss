@@ -63,3 +63,29 @@ body {
 #lbl_update_time {
   width: 225px;
 }
+
+// scroll bar styles
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  //box-shadow: inset 0 0 2px #636e72;
+  border-radius: 8px;
+  background-color: #dfe6e9;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #636e72;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #2d3436;
+}

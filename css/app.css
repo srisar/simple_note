@@ -62,4 +62,27 @@ body {
   width: 225px;
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background-color: #dfe6e9;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #636e72;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #2d3436;
+}
+
 /*# sourceMappingURL=app.css.map */
