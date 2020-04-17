@@ -1,0 +1,16 @@
+{
+  "name": "simple note",
+  "short_name": "simple_note",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#2A3443",
+  "description": "A simple note taking app with auto save.",
+  "theme_color": "#2A3443",
+  "icons": [
+    {
+      "src": "./icons/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
