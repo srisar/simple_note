@@ -3,7 +3,7 @@ import {downloadFile} from "./_downloads.js";
 
 $(function () {
 
-    $("#lbl_version").text("v 0.18");
+    $("#lbl_version").text("v 0.19");
 
     store.initLocalStorage();
     loadDocument(store.fetchStoredDocument());
