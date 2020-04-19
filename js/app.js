@@ -1,15 +1,17 @@
 import * as store from "./_localstore.js";
 import {downloadFile} from "./_downloads.js";
+import {selectRandomTitle} from "./_note_titles.js";
 
 $(function () {
 
-    $("#lbl_version").text("v 0.22");
+    $("#lbl_version").text("v 0.23");
 
     store.initLocalStorage();
     loadDocument(store.fetchStoredDocument());
 
     updateLastUpdatedTime();
     autoUpdateWindowTitle();
+    selectRandomTitle();
 
     btnSaveDocumentClick();
     btnNewDocClick();

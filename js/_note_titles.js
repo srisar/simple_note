@@ -5,3 +5,7 @@ const noteTitles = [
     "when will you begin that long journey into yourself?"
 ];
 
+export function selectRandomTitle() {
+    const noteTitle = $("#note_title");
+    noteTitle.attr("placeholder", _.sample(noteTitles));
+}
