@@ -3,7 +3,7 @@ import {downloadFile} from "./_downloads.js";
 
 $(function () {
 
-    $("#lbl_version").text("v 0.19");
+    $("#lbl_version").text("v 0.20");
 
     store.initLocalStorage();
     loadDocument(store.fetchStoredDocument());
@@ -17,6 +17,7 @@ $(function () {
 
 
     autoSave();
+    updateWordsCount();
 
     return registerSW();
 
@@ -35,18 +36,12 @@ async function registerSW() {
 }
 
 
-function loadDocument(note) {
+/*
+ *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ * UI hooks and methods
+ * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ */
 
-    if (note === null) return;
-
-    $("#note_title").val(note.title);
-    $("#note_body").val(note.body);
-
-    if (note.title !== "") {
-        document.title = `simple note - ${note.title}`;
-    }
-
-}
 
 function updateLastUpdatedTime() {
     const labelUpdateTime = $("#lbl_update_time");
@@ -60,6 +55,40 @@ function autoUpdateWindowTitle() {
         document.title = "simple note";
         document.title += " - " + $(this).val();
     });
+
+}
+
+function countWords(str) {
+    const matches = str.match(/[\w\d’'-]+/gi);
+    return matches ? matches.length : 0;
+}
+
+
+function updateWordsCount() {
+    $("#note_body").on("keyup", function () {
+        const text = $(this).val();
+
+        $("#word_count").text(countWords(text));
+
+    });
+}
+
+/*
+ *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ * Document loading and saving
+ * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ */
+
+function loadDocument(note) {
+
+    if (note === null) return;
+
+    $("#note_title").val(note.title);
+    $("#note_body").val(note.body);
+
+    if (note.title !== "") {
+        document.title = `simple note - ${note.title}`;
+    }
 
 }
 
@@ -81,8 +110,13 @@ function autoSave(note) {
     setInterval(saveDocument, 5000, note);
 }
 
+/*
+ *++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ * Event Listeners
+ * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ */
 
-function btnSaveDocumentClick(document) {
+function btnSaveDocumentClick() {
 
     const btnSave = $("#btn_save_doc");
     btnSave.on("click", function () {
@@ -122,3 +156,4 @@ function btnDownloadClick() {
 
     })
 }
+
