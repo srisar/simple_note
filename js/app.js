@@ -3,7 +3,7 @@ import {downloadFile} from "./_downloads.js";
 
 $(function () {
 
-    $("#lbl_version").text("v 0.20");
+    $("#lbl_version").text("v 0.22");
 
     store.initLocalStorage();
     loadDocument(store.fetchStoredDocument());
@@ -85,6 +85,8 @@ function loadDocument(note) {
 
     $("#note_title").val(note.title);
     $("#note_body").val(note.body);
+
+    $("#word_count").text(countWords(note.body));
 
     if (note.title !== "") {
         document.title = `simple note - ${note.title}`;
