@@ -4,7 +4,7 @@ import {selectRandomTitle} from "./_note_titles.js";
 
 $(function () {
 
-    $("#lbl_version").text("v 0.23");
+    $("#lbl_version").text("v 0.24");
 
     store.initLocalStorage();
     loadDocument(store.fetchStoredDocument());
@@ -61,7 +61,12 @@ function autoUpdateWindowTitle() {
 }
 
 function countWords(str) {
-    const matches = str.match(/[\w\d’'-]+/gi);
+
+    str = str.replace(/(^\s*)|(\s*$)/gi,"");
+    str = str.replace(/[ ]{2,}/gi," ");
+    str = str.replace(/\n /,"\n");
+
+    const matches = str.split(" ");
     return matches ? matches.length : 0;
 }
 
