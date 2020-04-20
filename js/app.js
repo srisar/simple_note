@@ -4,7 +4,7 @@ import {selectRandomTitle} from "./_note_titles.js";
 
 $(function () {
 
-    $("#lbl_version").text("v 0.26");
+    $(".lbl_version").text("v 0.27");
 
 
     store.initLocalStorage();
@@ -19,6 +19,10 @@ $(function () {
 
     autoSave();
     updateWordsCount();
+
+    $("#btn_about").on("click", function () {
+        $("#modal_about").modal("show");
+    });
 
     return registerSW();
 

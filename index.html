@@ -28,12 +28,13 @@
         <div class="clearfix">
             <div class="float-left mb-3">
                 <span class="mr-3"><img class="app_icon" src="images/notebook.svg" alt="simple note"></span>
-                <button class="btn btn-sm btn-dark" id="btn_new_doc">new</button>
+                <button class="btn btn-sm btn-light" id="btn_new_doc">new</button>
+                <button class="btn btn-sm btn-success" id="btn_download">download</button>
 
             </div>
 
             <div class="float-right mb-3" id="">
-                <button class="btn btn-sm btn-success" id="btn_download">download</button>
+                <button class="btn btn-sm btn-light" id="btn_about">?</button>
             </div>
 
         </div>
@@ -58,7 +59,7 @@
            <div class="pt-3 footer">
                <div class="float-left">
                    <p class="m-0"><a href="https://srisar.dev" target="_blank">srisar.dev</a>
-                       <span id="lbl_version"></span> | <a href="https://github.com/srisar/simple_note" target="_blank">github</a></p>
+                       <span class="lbl_version"></span> | <a href="https://github.com/srisar/simple_note" target="_blank">github</a></p>
                </div>
 
                <div class="float-right font-weight-bold">
@@ -74,7 +75,7 @@
 
 <div class="modal fade" id="modal_save_note" tabindex="-1" role="dialog" aria-labelledby="modal_save_note" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content text-dark">
             <div class="modal-header">
                 <h5 class="modal-title" id="label_modal_save_note">save note</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -87,6 +88,32 @@
             <div class="modal-footer">
                 <button id="btn_modal_create_new_note" type="button" class="btn btn-warning" data-dismiss="modal">delete away</button>
                 <button id="btn_modal_download_note" type="button" class="btn btn-success">aye, download!</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal_about" tabindex="-1" role="dialog" aria-labelledby="modal_save_note" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content text-dark">
+            <div class="modal-header">
+                <h5 class="modal-title">simple note <span class="lbl_version "></span></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>it is a very simple note taking app without any fancy features, duh!</p>
+                <p>the purpose is to keep it simple and distraction-free and when resized to a smaller size,
+                    have a good ui that maximizes the tying area.</p>
+                <p>you can install this as an app on windows desktop if you are using google chrome.</p>
+                <p>it uses jquery, bootstrap, lodash, popper.js</p>
+                <p>also utilises html5 local storage to save the notes locally.</p>
+                <hr>
+                <p>source code is available on <a href="https://github.com/srisar/simple_note" target="_blank">github</a></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-dismiss="modal">close</button>
             </div>
         </div>
     </div>

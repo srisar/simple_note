@@ -1,4 +1,4 @@
-const cacheName    = 'pwa-conf-v8';
+const cacheName    = 'simplenotecache-v3';
 const staticAssets = [
     './',
     './index.html',
