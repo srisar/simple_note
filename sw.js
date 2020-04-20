@@ -1,4 +1,4 @@
-const cacheName    = 'simplenotecache-v3';
+const cacheName    = 'simplenotecache-v4';
 const staticAssets = [
     './',
     './index.html',

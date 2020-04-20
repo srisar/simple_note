@@ -4,7 +4,7 @@ import {selectRandomTitle} from "./_note_titles.js";
 
 $(function () {
 
-    $(".lbl_version").text("v 0.28");
+    $(".lbl_version").text("v 0.29");
 
 
     store.initLocalStorage();

@@ -17,12 +17,16 @@ body {
   font-family: "Recursive", sans-serif;
   font-size: 0.9em;
   padding: 10px;
-  background-color: #b2bec3;
-  color: #2d3436;
+  background-color: #3d3d3d;
+  color: #ffffff;
 }
 
 a {
-  color: #0984e3;
+  color: #ff4d4d;
+}
+
+a:hover {
+  color: #ff3838;
 }
 
 .modal-body {
@@ -44,7 +48,7 @@ a {
   padding: 10px 10px 10px 10px;
   resize: none;
   font-family: "Recursive", sans-serif;
-  background-color: #636e72;
+  background-color: #4b4b4b;
   color: #ffffff;
 }
 
@@ -53,10 +57,9 @@ a {
 }
 
 #note_title {
-  font-size: 1em;
-  font-weight: bold;
+  font-size: 1.1em;
   border: solid 1px #2d3436;
-  background-color: #636e72;
+  background-color: #4b4b4b;
   color: #ffffff;
 }
 
