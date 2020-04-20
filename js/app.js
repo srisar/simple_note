@@ -4,16 +4,15 @@ import {selectRandomTitle} from "./_note_titles.js";
 
 $(function () {
 
-    $("#lbl_version").text("v 0.24");
+    $("#lbl_version").text("v 0.26");
+
 
     store.initLocalStorage();
     loadDocument(store.fetchStoredDocument());
 
-    updateLastUpdatedTime();
     autoUpdateWindowTitle();
     selectRandomTitle();
 
-    btnSaveDocumentClick();
     btnNewDocClick();
     btnDownloadClick();
 
@@ -44,12 +43,6 @@ async function registerSW() {
  * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  */
 
-
-function updateLastUpdatedTime() {
-    const labelUpdateTime = $("#lbl_update_time");
-    labelUpdateTime.val(moment().format('MMMM Do YYYY, h:mm:ss a').toLowerCase());
-}
-
 function autoUpdateWindowTitle() {
 
     $("#note_title").on("keyup", function () {
@@ -62,12 +55,14 @@ function autoUpdateWindowTitle() {
 
 function countWords(str) {
 
-    str = str.replace(/(^\s*)|(\s*$)/gi,"");
-    str = str.replace(/[ ]{2,}/gi," ");
-    str = str.replace(/\n /,"\n");
+    if (str.trim() === "") return 0;
+    str = str.replace(/\n/g, " ");
+    str = str.replace(/(^\s*)|(\s*$)/gi, "");
+    str = str.replace(/[ ]{2,}/gi, " ");
+    str = str.replace(/\n /, "\n");
 
     const matches = str.split(" ");
-    return matches ? matches.length : 0;
+    return matches.length;
 }
 
 
@@ -112,11 +107,37 @@ function saveDocument() {
     };
 
     store.updateLocalStorageDocument(document);
-    updateLastUpdatedTime();
 }
 
 function autoSave(note) {
-    setInterval(saveDocument, 5000, note);
+    setInterval(saveDocument, 1000, note);
+}
+
+function cleanSlate() {
+    const documentTitle = $("#note_title");
+    const documentBody  = $("#note_body");
+
+    store.cleanLocalStore();
+
+    documentTitle.val("");
+    documentBody.val("");
+    selectRandomTitle();
+
+    saveDocument(document);
+}
+
+
+function downloadNote() {
+    let title  = $("#note_title").val();
+    const body = $("#note_body").val();
+
+    if (title === "") {
+        title = "untitled"
+    }
+
+    let content = `## ${title}\n\n${body}`;
+
+    downloadFile(`${title}.md`, content);
 }
 
 /*
@@ -125,43 +146,37 @@ function autoSave(note) {
  * +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  */
 
-function btnSaveDocumentClick() {
-
-    const btnSave = $("#btn_save_doc");
-    btnSave.on("click", function () {
-        saveDocument();
-    });
-
-}
 
 function btnNewDocClick() {
     $("#btn_new_doc").on("click", function () {
 
-        const documentTitle = $("#note_title");
         const documentBody  = $("#note_body");
 
-        store.cleanLocalStore();
+        if (documentBody.val().length > 0) {
+            const modal = $("#modal_save_note")
+            modal.modal("show");
 
-        documentTitle.val("");
-        documentBody.val("");
+            $("#btn_modal_create_new_note").on("click", function () {
+                cleanSlate();
+                modal.modal("hide");
+            });
 
-        saveDocument(document);
+            $("#btn_modal_download_note").on("click", function () {
+                downloadNote();
+                modal.modal("hide");
+            })
+
+        }
+
+        selectRandomTitle();
+
     });
 }
 
 function btnDownloadClick() {
     $("#btn_download").on("click", function () {
 
-        let title  = $("#note_title").val();
-        const body = $("#note_body").val();
-
-        if (title === "") {
-            title = "untitled"
-        }
-
-        let content = `## ${title}\n\n${body}`;
-
-        downloadFile(`${title}.md`, content);
+        downloadNote();
 
     })
 }
