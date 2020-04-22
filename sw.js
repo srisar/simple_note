@@ -27,13 +27,13 @@ const staticAssets = [
 ];
 
 self.addEventListener('install', async event => {
-    const cache = await caches.open(cacheName);
-    await cache.addAll(staticAssets);
+    // const cache = await caches.open(cacheName);
+    // await cache.addAll(staticAssets);
 });
 
 self.addEventListener('fetch', async event => {
-    const request = event.request;
-    event.respondWith(cacheFirst(request));
+    // const request = event.request;
+    // event.respondWith(cacheFirst(request));
 });
 
 async function cacheFirst(request) {
